@@ -1,14 +1,9 @@
-language: php
 sudo: required
 services:
   - docker
 
 
-before_install:
-  - docker build -t hracho/docker-react -f Dockerfile.dev .
 
-script:
-  - docker run -d hracho/docker-react 
 
 
 deploy:
@@ -20,6 +15,6 @@ deploy:
   bucket_name: "elasticbeanstalk-eu-central-1-900873517060"
   bucket_path: "docker-react"
   on:
-    branch: master
+    branch: app_with_db
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
